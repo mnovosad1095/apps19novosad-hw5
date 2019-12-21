@@ -15,7 +15,7 @@ public class MapIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        if (!parentIterator.hasNext()){
+        if (!parentIterator.hasNext()) {
             return null;
         }
         return mapper.apply(parentIterator.next());

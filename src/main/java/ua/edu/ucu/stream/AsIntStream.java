@@ -135,7 +135,9 @@ public class AsIntStream implements IntStream {
 
     private void checkIsClosed() {
         if (isClosed) {
-            throw new IllegalStateException("Stream was already operated upon or closed");
+            throw new IllegalStateException(
+                "Stream was already operated upon or closed"
+                );
         }
         isClosed = true;
     }

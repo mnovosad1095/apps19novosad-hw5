@@ -10,7 +10,8 @@ public class FlatMapIterator implements Iterator<Integer> {
     private int[] lastStream;
     private int position;
 
-    public FlatMapIterator(Iterator<Integer> iterator, IntToIntStreamFunction func) {
+    public FlatMapIterator(Iterator<Integer> iterator,
+             IntToIntStreamFunction func) {
         this.func = func;
         parentIterator = iterator;
     }
@@ -18,7 +19,7 @@ public class FlatMapIterator implements Iterator<Integer> {
     @Override
     public Integer next() {
         updateLastStream();
-        if (lastStream == null) return null;
+        if (lastStream == null) { return null; }
         return lastStream[position++];
     }
 
@@ -30,7 +31,7 @@ public class FlatMapIterator implements Iterator<Integer> {
     private void updateLastStream() {
         if (!isLastStream())
         {
-            if (!hasNext()) lastStream = null;
+            if (!hasNext()) { lastStream = null; }
             lastStream = func.applyAsIntStream(parentIterator.next()).toArray();
             position = 0;
         }
